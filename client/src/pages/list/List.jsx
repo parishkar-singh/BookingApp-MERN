@@ -5,6 +5,7 @@ import {useLocation} from "react-router-dom";
 import './list.css'
 import {format} from "date-fns"
 import {DateRange} from 'react-date-range';
+import SearchItem from "../../components/searchItem/SearchItem";
 
 const List = () => {
     const location = useLocation()
@@ -33,12 +34,12 @@ const List = () => {
                             <span
                                 onClick={() => setOpenDate(!openDate)}>{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")}`}</span>
                             {/*<input type="text" />*/}
-                        </div>
                         {openDate && (<DateRange
                             onChange={(item) => setDate([item.selection])}
                             minDate={new Date()}
                             ranges={date}
                         />)}
+                        </div>
                         <div className="listItem">
                             <label>Options</label>
                             <div className="listOptions">
@@ -85,7 +86,12 @@ const List = () => {
                         </div>
                             <button>Search</button>
                     </div>
-                    <div className="listResult"></div>
+                    <div className="listResult">
+                        <SearchItem/>
+                        {/*<SearchItem/>*/}
+                        {/*<SearchItem/>*/}
+                        {/*<SearchItem/>*/}
+                    </div>
                 </div>
             </div>
         </div>
