@@ -19,9 +19,9 @@ const connect = async () => {
     }
 }
 
-mongoose.connection.on("disconnected", () => {
-    console.log("database is disconnected")
-})
+// mongoose.connection.on("disconnected", () => {
+//     console.log("database is disconnected")
+// })
 
 // middlewares
 app.use(Express.json())

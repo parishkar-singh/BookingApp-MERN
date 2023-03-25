@@ -45,3 +45,13 @@ export const deleteHotels = async (req, res) => {
         res.status(500).json(e)
     }
 }
+export const countByCity=async (req,res,next)=>{
+    const cities=req.query.cities.split(',')
+    try{
+    const list=await Promise.all(cities.map(city=>{
+        return Hotel.countDocuments({city:city})
+    }))
+    }catch (error){
+        next(error)
+    }
+}
