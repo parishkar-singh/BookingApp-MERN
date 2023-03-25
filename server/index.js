@@ -6,9 +6,11 @@ import roomsRoute from './routes/rooms.js'
 import usersRoute from './routes/users.js'
 import hotelsRoute from './routes/hotels.js'
 import cookieParser from "cookie-parser";
+import cors from 'cors';
 
 mongoose.set("strictQuery", false);
 const app = Express()
+app.use(cors())
 dotenv.config()
 const connect = async () => {
     try {
