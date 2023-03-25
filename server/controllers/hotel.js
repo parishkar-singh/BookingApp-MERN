@@ -5,8 +5,11 @@ import hotel from "../models/Hotel.js";
 export const getHotels = async (req, res, next) => {
     const {min,max,...other}=req.query
     try {
-        const getHotel = await Hotel.find(req.query).limit(req.query.limit)
-        res.status(200).json(getHotel)
+        const Hotels = await Hotel.find({
+            ...other,
+            cheapest: {$gt: min|1, $lt: max||99999}
+        }).limit(parseInt(req.query.limit))
+        res.status(200).json(Hotels)
     } catch (e) {
         // res.status(500).json(e)
         next(e)
