@@ -7,9 +7,10 @@ import
 } from "react-router-dom"
 import Home from "./pages/home/Home.jsx"
 import List from "./pages/list/List.jsx"
-import Hotel from "./pages/hotel/Hotel";
+import Hotel from "./pages/hotel/Hotel.jsx";
 function App() {
     return (
+
         <BrowserRouter>
             <Routes>
                  <Route path="/" element={<Home/>}/>

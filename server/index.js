@@ -2,7 +2,6 @@ import Express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import authRoute from './routes/auth.js'
-import movieRoute from './routes/movie.js'
 import roomsRoute from './routes/rooms.js'
 import usersRoute from './routes/users.js'
 import hotelsRoute from './routes/hotels.js'
@@ -28,7 +27,6 @@ mongoose.connection.on("disconnected", () => {
 app.use(Express.json())
 app.use(cookieParser())
 app.use("/api/auth", authRoute)
-app.use("/api/movie", movieRoute)
 app.use("/api/users", usersRoute)
 app.use("/api/hotels", hotelsRoute)
 app.use("/api/rooms", roomsRoute)
@@ -43,8 +41,10 @@ app.use((err, req, res, next) => {
     })
 })
 // end of middlewares
-app.listen(8080, () => {
-    // console.log("connected to backend!")
+const  PORT=8080;
+app.listen(PORT, () => {
+
+    console.log("Express server up and running @",PORT)
     connect()
 })
 
