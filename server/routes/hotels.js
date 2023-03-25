@@ -6,13 +6,13 @@ const router = Express.Router();
 // get hotels list
 router.get("/", getHotels)
 // get hotel
-router.get("/:id", getOneHotels)
+router.get("/hotel/:id", getOneHotels)
 // adding a new hotel
 router.post("/",verifyAdmin, createHotel)
 // updating the Hotel
-router.put("/:id", verifyAdmin,putHotels)
+router.put("/update/:id", verifyAdmin,putHotels)
 // deleting the Document
-router.delete("/:id", verifyAdmin,deleteHotels)
+router.delete("/delete/:id", verifyAdmin,deleteHotels)
 //
 router.get("/countByCity",countByCity)
 router.get('/countByType',getHotels)
