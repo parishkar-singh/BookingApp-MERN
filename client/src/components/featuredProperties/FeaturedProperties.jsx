@@ -1,7 +1,9 @@
 import React from "react";
 import './featuredproperties.css'
+import useFetch from "../hooks/useFetch";
 
 const FeaturedProperties = () => {
+    const {data, loading, error} = useFetch("/hotels/countByType")
     return (<div className="fp">
         <div className="fpItem">
             <img

@@ -3,8 +3,9 @@ import hotels from "../routes/hotels.js";
 import hotel from "../models/Hotel.js";
 
 export const getHotels = async (req, res, next) => {
+    const {min,max,...other}=req.query
     try {
-        const getHotel = await Hotel.find()
+        const getHotel = await Hotel.find(req.query).limit(req.query.limit)
         res.status(200).json(getHotel)
     } catch (e) {
         // res.status(500).json(e)
