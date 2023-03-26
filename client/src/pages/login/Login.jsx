@@ -11,7 +11,7 @@ const Login = () => {
         password: undefined
     })
     const navigate=useNavigate()
-    const {user,loading, error, dispatch} = useContext(AuthContext)
+    const {loading, error, dispatch} = useContext(AuthContext)
     const handleChange = (e) => {
         setCredentials(prev => ({...prev, [e.target.id]: e.target.value}))
     }
@@ -20,14 +20,13 @@ const Login = () => {
         dispatch({type: "LOGIN_START"})
         try {
             const res = await axios.post("http://localhost:8080/api/auth/login", credentials)
-            dispatch({type: "LOGIN_SUCCESS", payload: res.data.details})
+            dispatch({type: "LOGIN_SUCCESS", payload: res.data})
             navigate("/")
         } catch (error) {
-            dispatch({type: "LOGIN_FAILURE",payload:error.response.data})
+            dispatch({type: "LOGIN_FAILURE",payload:error.response})
 
         }
     }
-    console.log(user)
     return (
         <div className="login">
             <div className="lContainer">
