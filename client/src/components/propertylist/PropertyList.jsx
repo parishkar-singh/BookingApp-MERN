@@ -11,12 +11,11 @@ const PropertyList = () => {
         "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "https://images.pexels.com/photos/2294125/pexels-photo-2294125.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1=",
     ]
-    console.log(data)
     return (
         <div className="pList">
             {loading ? "Loading " : (
                 <>
-                    {data && images.map((img,i) => (
+                    {data && images?.map((img,i) => (
                         <div className="pListItem" key={i}>
                             <img
                                 src={img}

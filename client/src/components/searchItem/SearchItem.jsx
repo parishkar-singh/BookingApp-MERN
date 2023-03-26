@@ -23,7 +23,7 @@ const SearchItem = ({item}) => {
                     <button>{item.rating}</button>
                 </div>}
                 <div className="searchDetailTexts">
-                    <span className="searchPrice">{item.cheapest}</span>
+                    <span className="searchPrice">${item.cheapest}</span>
                     <span className="searchTaxes">Includes taxes and fees</span>
                     <Link className={"link"} to={`/hotels/${item._id}`}>
 

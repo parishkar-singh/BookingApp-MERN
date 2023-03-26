@@ -14,7 +14,7 @@ const router = Express.Router();
 // get hotels list
 router.get("/", getHotels)
 // get hotel
-router.get("/hotel/:id", getOneHotels)
+router.get("/find/:id", getOneHotels)
 // adding a new hotel
 router.post("/",verifyAdmin, createHotel)
 // updating the Hotel
