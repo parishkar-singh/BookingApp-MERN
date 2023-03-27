@@ -6,8 +6,6 @@ export const getOneRoom = async (req, res, next) => {
         const getRoom = await Room.findOne(req.params.id)
         res.status(200).json(getRoom)
     } catch (e) {
-        // res.status(500).json(e)
-        // next(e)
         res.status(500).json(e)
     }
 }
@@ -28,7 +26,7 @@ export const createRoom = async (req, res, next) => {
         try {
             await Hotel.findByIdAndUpdate(hotelID, {$push: {rooms: savedRoom._id}})
         } catch (err) {
-            next(err)
+        res.status(500).json(err)
         }
         res.status(200).json(savedRoom)
     } catch (err) {
@@ -57,4 +55,17 @@ export const deleteRoom = async (req, res) => {
     } catch (e) {
         res.status(500).json(e)
     }
+}
+export const updateRoomAvailability=async (req,res)=>{
+    try{
+    await Room.updateOne({'roomNumbers.id':req.params.id},{
+        $push:{
+            "roomNumbers.$.unavailableDate":req.body.dates
+        },
+    })
+        res.status(200).json('Room status has been updated.')
+    }catch (error){
+        res.status(500).json('error updating the dates')
+    }
+
 }
