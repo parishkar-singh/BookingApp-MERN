@@ -30,7 +30,7 @@ const Login = () => {
     return (
         <div className="login">
             <div className="lContainer">
-                <h1>Booking.com</h1>
+                <h1 className='loginh1'>Booking.com</h1>
                 <input placeholder='username' className='lInput' id='username' onChange={handleChange} type="text"/>
                 <input placeholder='password' className='lInput' id='password' onChange={handleChange} type="text"/>
                 <hr/>

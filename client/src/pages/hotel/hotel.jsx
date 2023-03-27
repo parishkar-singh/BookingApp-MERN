@@ -13,8 +13,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import {useState} from "react";
 import useFetch from "../../components/hooks/useFetch";
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {SearchContext} from "../../components/context/searchContext";
+import {AuthContext} from "../../components/context/authContext";
+import Reserve from "../reserve/Reserve";
 
 const Hotel = () => {
     const [slideNumber, setSlideNumber] = useState(0);
@@ -36,7 +38,17 @@ const Hotel = () => {
         setSlideNumber(i);
         setOpen(true);
     };
-
+    const {user}=useContext(AuthContext)
+    const navigate=useNavigate()
+    const [openModal,setOpenModal]=useState(false)
+const handleClick=()=>{
+    if(user){
+        setOpenModal(true)
+    }
+    else {
+        navigate('/login')
+    }
+}
     const handleMove = (direction) => {
         let newSlideNumber;
 
@@ -119,15 +131,16 @@ const Hotel = () => {
                             <h2>
                                 <b>${data.cheapest*days*options.room}</b> ({days}nights)
                             </h2>
-                            <button>Reserve or Book Now!</button>
+                            <button onClick={handleClick}>Reserve or Book Now!</button>
                         </div>
                     </div>
                 </div>
                 <MailList/>
                 <Footer/>
             </div>
-
-                </>) }
+                </>
+            ) }
+            {openModal&&<Reserve setOpen={setOpenModal} hotelId={path}/>}
             </div>
     );
 };

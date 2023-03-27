@@ -3,7 +3,7 @@ import {
     countByCity,
     countByType,
     createHotel,
-    deleteHotels,
+    deleteHotels, getHotelRooms,
     getHotels,
     getOneHotels,
     putHotels
@@ -22,6 +22,7 @@ router.put("/update/:id", verifyAdmin,putHotels)
 // deleting the Document
 router.delete("/delete/:id", verifyAdmin,deleteHotels)
 //
+router.get('/room/:id',getHotelRooms)
 router.get("/countByCity",countByCity)
 router.get('/countByType',countByType)
 export default router

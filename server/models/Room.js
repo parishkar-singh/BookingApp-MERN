@@ -6,7 +6,7 @@ const RoomSchema = new mongoose.Schema({
         {
             type: String,
             require: true,
-            unique: true
+            // unique: true
         },
     price:
         {
